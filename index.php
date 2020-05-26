@@ -1,6 +1,8 @@
 <?php
 $submit = filter_input(INPUT_POST, 'submit');
- 
+$gender = filter_input(INPUT_POST, "gender");
+$email = filter_input(INPUT_POST, "email");
+
 ?>
  
 <!DOCTYPE html>
@@ -12,8 +14,13 @@ $submit = filter_input(INPUT_POST, 'submit');
 </head>
 <body>
 <?php
-
-?>
+if(isset($submit)) { ?>
+    <p>formulář byl odeslán a proto ho už znovu nezobrazuji!</p>
+    <p>Odeslaný email: xx@xx.cz</p>
+    <p>Zadané pohlaví: xxx</p>
+<?php
+} else { ?>
+    <p>stránka byla načtena bez odeslaného formuláře a proto zobrazuji formulář</p>
  
     <form action="index.php" method="post">
         <label for="email">E-mail:</label>
@@ -31,5 +38,9 @@ $submit = filter_input(INPUT_POST, 'submit');
         <input type="submit" name="submit" value="Přidat do databáze">
 
         </form>
+        <?php
+}
+?>
+
 </body>
 </html>
